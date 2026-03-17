@@ -1,3 +1,34 @@
+import sql from '@/lib/db';
+import Link from 'next/link';
+
+export default async function HomePage() {
+  const restaurants = await sql`SELECT id, name, description, hero_image FROM restaurants WHERE is_active = true ORDER BY created_at`;
+
+  return (
+    <div className="min-h-screen bg-[#FDFBF7] p-4">
+      <div className="mx-auto max-w-3xl">
+        <header className="mb-6">
+          <h1 className="text-3xl font-bold text-[#FF630F]">Restaurants</h1>
+          <p className="text-gray-600">Browse onboarded restaurants</p>
+        </header>
+
+        <div className="grid gap-4">
+          {restaurants.map((r: any) => (
+            <Link key={r.id} href={`/restaurant/${r.id}`} className="block rounded-lg bg-white p-4 shadow hover:shadow-md">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-lg font-semibold">{r.name}</h2>
+                  <p className="text-sm text-gray-500">{r.description}</p>
+                </div>
+                <div className="text-sm text-[#FF630F]">View menu →</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 import { verifySession, deleteSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
 

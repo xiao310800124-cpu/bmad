@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "apply-schema": "node scripts/run-schema.js",
+    "seed-db": "node scripts/seed-db.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
