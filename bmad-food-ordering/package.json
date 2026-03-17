@@ -4,14 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "apply-schema": "node scripts/run-schema.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "dotenv": "^16.6.1",
     "jose": "^6.2.1",
     "next": "16.1.7",
+    "pg": "^8.20.0",
     "postgres": "^3.4.8",
     "react": "19.2.3",
     "react-dom": "19.2.3",
